@@ -9,13 +9,155 @@
 import SwiftUI
 
 struct ContentView: View {
+    
+    @State public var passwort : String = ""
+    @State public var email : String = ""
+    @State public var fehlermeldung : String = "Passwort oder E-mail ist falsch"
+    func checkEmAndPa()  {
+        if passwort == "Hallo" && email == "123" {
+            print("Hallo")
+        }
+    }
+    
     var body: some View {
-        Text("Hello, World!")
+        
+        NavigationView {
+            VStack {
+                VStack{
+                       Spacer()
+                       LoginHeaderview()
+                       Spacer()
+                       Divider()
+                       EmailTextField(email: $email)
+                       PasswordTextFieldView(Passwort:$passwort)
+                       LoginButton()
+                       Spacer()
+                       Divider()
+                    NavigationLink(destination: NewAccountView()) {
+                      RegestrierenButton()
+
+                       
+                }
+                   
+            }
+        }
+    }.accentColor(Color.black)
+         
+       
+          
+           
+            }
+   
+      }
+    
+  
+
+
+
+   
+struct LoginHeaderview: View {
+    var body: some View {
+        Group {
+            Image("Logo")
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+                .frame(width: 100.0, height: 100.0)
+            Text("Squad")
+                .font(.title)
+                .bold()
+            Text("_________________________")
+                .foregroundColor(Color.gray)
+                .font(.subheadline)
+                .multilineTextAlignment(.center)
+               
+        }
     }
 }
+
+
+struct EmailTextField: View {
+    
+   @Binding var email : String
+    
+    var body: some View {
+       
+        HStack {
+            Image(systemName: "envelope.fill")
+                .foregroundColor(Color.gray)
+            TextField("E-mail...", text: $email)
+        }.padding().border(Color.init(white: 0.9)).padding(  [.leading, .trailing, .top])
+    }
+}
+
+
+struct  PasswordTextFieldView: View {
+    @Binding var Passwort : String
+
+    
+    var body: some View {
+        HStack { 
+            Image(systemName: "lock.fill")
+                .foregroundColor(Color.gray)
+            TextField("Passwort...", text: $Passwort)
+            }.padding().border(Color.init(white: 0.9)).padding(  [.leading, .trailing, .top])
+    }
+}
+
+struct LoginButton: View {
+    @State var statusText = "Hello"
+    var body: some View {
+        VStack{
+        Button(action: {
+            
+        }, label: {
+            
+            HStack {
+                Spacer()
+                Text("Login")
+                    .bold()
+                    .foregroundColor(Color.white)
+                Spacer()
+            }.padding().background(Color.black).cornerRadius(5).shadow(radius: 10)
+                .padding()
+        })
+   
+               
+                
+               
+            
+            
+        }
+    }
+}
+
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
     }
 }
+
+struct RegestrierenButton: View {
+    var body: some View {
+        HStack {
+            
+            Text("Du hast noch kein Account?")
+                .foregroundColor(Color.gray)
+                .font(.footnote)
+            
+            
+            
+            Button (action: {
+                
+            }, label: { Text ("Regestrieren")
+                
+                .foregroundColor(Color.black)
+                .bold()
+            })
+            
+        }
+    }
+}
+
+
+
