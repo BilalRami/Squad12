@@ -10,14 +10,14 @@ import SwiftUI
 
 struct PasswortTextFieldView: View {
     
-    @Binding var Passwort : String
+    @Binding var passwort : String
     
     var body: some View {
         
                 HStack {
                     Image(systemName: "lock.fill")
                         .foregroundColor(Color.gray)
-                    TextField("Passwort...", text: $Passwort)
+                    SecureField("Passwort...", text: $passwort)
                 }.padding().border(Color.init(white: 0.9)).padding(  [.leading, .trailing, .top])
             }
         }

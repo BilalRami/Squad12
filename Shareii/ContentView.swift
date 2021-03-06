@@ -10,7 +10,7 @@ import SwiftUI
 
 struct ContentView: View {
     
-    @State public var passwort : String = ""
+    @State  var passwort : String = ""
     @State public var email : String = ""
     @State public var fehlermeldung : String = "Passwort oder E-mail ist falsch"
     func checkEmAndPa()  {
@@ -29,7 +29,7 @@ struct ContentView: View {
                        Spacer()
                        Divider()
                        EmailTextField(email: $email)
-                       PasswordTextFieldView(Passwort:$passwort)
+                    PasswordTextFieldView(passwort:$passwort)
                        LoginButton()
                        Spacer()
                        Divider()
@@ -91,14 +91,14 @@ struct EmailTextField: View {
 
 
 struct  PasswordTextFieldView: View {
-    @Binding var Passwort : String
+    @Binding var passwort : String
 
     
     var body: some View {
         HStack { 
             Image(systemName: "lock.fill")
                 .foregroundColor(Color.gray)
-            TextField("Passwort...", text: $Passwort)
+           SecureField("Passwort...", text: $passwort)
             }.padding().border(Color.init(white: 0.9)).padding(  [.leading, .trailing, .top])
     }
 }
@@ -144,15 +144,15 @@ struct RegestrierenButton: View {
             Text("Du hast noch kein Account?")
                 .foregroundColor(Color.gray)
                 .font(.footnote)
-            
+            Text ("Regestrieren")
+                
+                .foregroundColor(Color.black)
+                .bold()
             
             
             Button (action: {
                 
-            }, label: { Text ("Regestrieren")
-                
-                .foregroundColor(Color.black)
-                .bold()
+            }, label: {
             })
             
         }

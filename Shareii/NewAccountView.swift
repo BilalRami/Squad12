@@ -35,7 +35,7 @@ struct NewAccountView: View {
             
             UserNametextFieldView(username: $username)
             EmailTextFieldView(email: $email)
-            PasswortTextFieldView(Passwort: $passwort)
+            PasswortTextFieldView(passwort: $passwort)
             Text("Das Passwort muss 8 Zeichen lang sein!")
                 .font(.footnote)
                 .foregroundColor(Color.gray)
