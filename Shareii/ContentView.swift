@@ -50,11 +50,6 @@ struct ContentView: View {
    
       }
     
-  
-
-
-
-   
 struct LoginHeaderview: View {
     var body: some View {
         Group {
