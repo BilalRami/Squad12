@@ -113,10 +113,6 @@ struct LoginButton: View {
                 .padding()
         })
    
-               
-                
-               
-            
             
         }
     }
